@@ -3,3 +3,5 @@
 *.json
 ##폴더무시
 .vscode/
+
+a.scss
