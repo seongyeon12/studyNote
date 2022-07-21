@@ -4,7 +4,7 @@ function answer(employee) {
       return a - b;
     })
     let last = employee[employee.length - 1];
-  return employee_id.indexOf(last);
+  return employee_id.indexOf(last) + 1;
 }
 
 let input = [
