@@ -15,8 +15,10 @@ function answer(s, e) {
       sum = s - e;
       s = e;
       e = sum;
-      
+
     if (e < 0) break;
+
+    sequence.push(e);
   }
   */
   return sequence;
