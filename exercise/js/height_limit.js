@@ -1,4 +1,7 @@
 function answer(user) {
+  /* permit = user.height >= 150;
+  */
+
   if (user.height > 150) {
     return true;
   } else {
