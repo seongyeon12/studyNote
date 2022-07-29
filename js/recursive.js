@@ -3,4 +3,4 @@ function recursive(num) {
   return num + recursive(num - 1);
 }
 // 3 + (2 + (1 + 0))
-console.log(recursive(100));
+console.log(recursive(4));
