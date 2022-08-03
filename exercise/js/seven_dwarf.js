@@ -1,38 +1,37 @@
-function answer(nums) {
+function answer(drawf) {
   let result = [];
-  let emp = 0;
-  let a = null;
-  let b = null;
-  let value = nums.reduce(function add(sum, cur) {
-    return sum + cur;
-  }, 0);
+  
+  // 1 9명(배열 총 합) = 7명(100) + 2명(faker힙) 
+  // 9명 - 7명 = 2명에 대한 합 숫자
+  let sum = 0;
+  for (let i = 0; i < drawf.length; i++) {
+      sum += drawf[i];
+  }
+  sum -= 100; // -> faker 2명에 대한 배지값 
 
-  value = value - 100;
-
-  for (let i = 0; i < nums.length; i++) {
-    for (let j = 1; j < nums.length; j++) {
-      if (value == nums[i] + nums[j]) {
-        emp = 0; 
-        let a = null;
-        let b = null;
-
-        a = Number(nums.splice(i, 1));
-        b = Number(nums.splice(j, 1));
-
-        emp = nums.reduce(function add(sum, cur) {
-          return sum + cur;
-        }, 0);
-
-        if (emp == 100) {
-          return nums;
-        } else {
-          nums.splice(i, 0, a);
-          nums.splice(j, 0, b);
-          return nums;
-        }
+  // 2 for 두 요소의 합이 faker 2명에 대한 합 숫자와 같은지 비교 -> i, j
+  let faker = [];
+  for (let i = 0; i < drawf.length; i++) {
+    for (let j = i + 1; j < drawf.length; j++) {
+      if (sum == drawf[i] + drawf[j]) {
+        faker[0] = i;
+        faker[1] = j;
+        break;
       }
     }
+    if (faker.length != 0) break;
   }
+
+
+  // 3 faker 두명을 제외하고 나머지 배지값을 result 에 넣어준다
+  let count = 0;
+  for (let i = 0; i < drawf.length; i++) {
+    if (faker[0] != i && faker[1] != i) {
+      result[count++] = drawf[i];
+    }
+  }
+
+  return result;
 }
 
 let input = [
