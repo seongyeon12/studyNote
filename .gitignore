@@ -1,6 +1,8 @@
 
 ##확장자 무시
 *.json
+text
+
 ##폴더무시
 .vscode/
 
