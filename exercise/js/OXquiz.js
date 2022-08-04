@@ -4,7 +4,7 @@ function answer(mark) {
 
   for (let i = 0; i < mark.length; i++) {
     if (1 == mark[i]) {
-      result += num++;
+      result += ++num;
     } else {
       num = 0;
     }
