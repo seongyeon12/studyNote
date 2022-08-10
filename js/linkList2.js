@@ -36,12 +36,13 @@ LinkedList.prototype.append = function (value) {
 
   if (this.head === null) {
     this.head = node;
-  } else {
+  }
+
     while (current.next != null) {
       current = current.next;
     }
     current.next = node;
-  }
+  
   this.length++;
 }
 

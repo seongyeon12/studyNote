@@ -74,6 +74,57 @@ LinkedList.prototype.insert = function(value, position = 0) {
   return true;
 }
 
+// remove(): value 데이터를 찾아 노드 삭제
+LinkedList.prototype.remove = function(value) {
+  let current = this.head,
+  prev = current;
+
+  while(current.data != value && current.next != null) {
+    prev = current;
+    current = current.next;
+  }
+
+  if (current.data != value) {
+    return null;
+  }
+
+  if (current === this.head) {
+    this.head = current.next;
+  } else {
+    prev.next = current.next;
+  }
+
+  this.length--;
+
+  return current.data;
+}
+
+// removeAt(): position 위치 노드 삭제 
+LinkedList.prototype.removeAt = function (position = 0) {
+  if (position < 0 || position >= this.length) {
+    return null;
+  }
+
+  let current = this.head,
+      index = 0,
+      prev;
+
+  if (position === 0) {
+    this.head = current.next;
+  } else {
+    while(index++ < position) {
+      prev = current;
+      current = current.next;
+    }
+
+    prev.next = current.next;
+  }
+
+  this.length--;
+
+  return current.data;
+}
+
 let ll = new LinkedList();
 
 ll.insert(1);
@@ -83,5 +134,14 @@ ll.printNode();
 
 ll.insert(2, 1);
 ll.insert(3, 3);
+ll.printNode();
+
+console.log(ll.removeAt(1000));
+ll.printNode();
+console.log(ll.removeAt(4));
+ll.printNode();
+console.log(ll.removeAt(0));
+ll.printNode();
+console.log(ll.removeAt(1));
 ll.printNode();
 console.log(ll.size())
