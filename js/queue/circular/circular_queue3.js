@@ -64,7 +64,7 @@ CircularQuere.prototype.clear = function (size = DEFAULT_SIZE) {
   this.tail = 0;
 }
 
-let cq = new CircularQuere([1, 2, 3, 4]);
+let cq = new CircularQuere([1, 2, 3]);
 console.log(cq);
 
 console.log(cq.enqueue(5));

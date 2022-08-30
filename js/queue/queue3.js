@@ -3,7 +3,7 @@ function Queue(array) {
   this.array = array ? array : [];
 }
 
-// get Buffer() - 객체 내 데이터 셋 반환
+// getBuffer() - 객체 내 데이터 셋 반환
 Queue.prototype.getBuffer = function () {
   return this.array.slice();
 }

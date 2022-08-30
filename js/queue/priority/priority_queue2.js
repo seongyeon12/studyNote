@@ -48,7 +48,7 @@ let pq = new PriorityQueue();
 
 pq.enqueue("Alice", 1);
 pq.enqueue("Bob", 2);
-console.log(pq);
+console.log(pq.getBuffer());
 
 pq.enqueue("Tom", 1);
 pq.enqueue("John", 3);

@@ -28,7 +28,7 @@ CircularQuere.prototype.enqueue = function (element) {
 
   this.array[this.tail] = element;
   this.tail = (this.tail + 1) % this.size;
-  this.length;
+  this.length++;
 
   return true;
 }
@@ -54,4 +54,7 @@ console.log(cq);
 
 console.log(cq.dequeue());
 console.log(cq.dequeue());
+console.log(cq);
+
+console.log(cq.enqueue(6));
 console.log(cq);
