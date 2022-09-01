@@ -149,6 +149,9 @@ LinkedList.prototype.remove2 = function (value) {
 
 let ll = new LinkedList();
 
+ll.append(3);
+console.log(ll);
+
 ll.insert(1);
 ll.insert(10);
 ll.insert(100);
