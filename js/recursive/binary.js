@@ -20,9 +20,11 @@ while (true) {
 console.log(result.split('').reverse().join(''));
 
 // 재귀함수
-function rec(num) {
-  let result = '';
-
+function binary(num) {
+    if (num == 1 || num == 0) {
+        return String(num) //종료조건
+    }
+    return binary(Math.floor(num/2)) + String(num % 2)
 }
 
-console.log(11/2)
+console.log(binary(12));
