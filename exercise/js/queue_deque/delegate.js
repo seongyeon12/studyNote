@@ -1,35 +1,48 @@
-/* 
-  큐 형태로 넣고, 처음 n먼저 제거
-  그 다음부턴 k번째 요소 제거, m이 큐에 들어올 경우 그 떄부턴 앞에서 뒤로 보내는 형식
-*/
+/* 대표 선출 */
+
+function CircularQuere(size) {
+  this.array = new Array(size);
+  this.size = size;
+  this.length = 0;
+  this.head = 0;
+  this.tail = 0;
+}
+
+CircularQuere.prototype.enqueue = function (element) {
+  this.length++;
+  this.array[this.tail++ % this.size] = element;
+}
+
+CircularQuere.prototype.dequeue = function () {
+  this.length--;
+  return this.array[this.head++ % this.size];
+}
 
 function answer(n, m, k) {
   let result = [];
-  let queue = [];
-  let arr = Array(n).fill().map((v,i)=>i+1);
 
-  // m번째 요소 제거
-  let j = 0;
-  while () {
-    queue.push(arr[i]);
+  // 후보세팅 (enqueue)
+  let cq = new CircularQuere(n);
+  for (let i = 1; i <= n; i++) {
+    cq.enqueue(i);
   }
-  
-  result.push(queue.pop());
-  console.log(result)
+  // 첫번째 노드 위치로 설정
+  cq.tail = cq.head = (n + m - 1) % n; 
 
-  /* 
-  반복 >>
-  k번 요소 제거하는 식으로 시작 -> 사이즈 초과 시 -> 다른 반복문으로 가는 구조 구축
-  */
- 
-  while (true) {
-    queue.push(arr[j++]);
-    while (4) {
+  // k만큼 움직이면서 대표 후보를 제거 (dequeue)
+  // 제거된 번호는 result에 추가
+  let count;
+  result.push(cq.dequeue());
+  while (cq.length !== 0) {
+    count = k - 1;
+    while (count--) {
+      cq.enqueue(cq.dequeue());
+      console.log(cq, 1)
     }
+    result.push(cq.dequeue())
+    console.log(cq, 2)
   }
-  
-
-  return result
+  return result;
 }
 let input = [
   [8, 2, 3],
