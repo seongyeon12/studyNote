@@ -35,6 +35,7 @@ Deque.prototype.popBack = function (element) {
 
 let dq = new Deque([1, 2, 3]);
 console.log(dq);
+console.log(dq.array)
 
 dq.pushFront(0);
 dq.pushBack(4);
