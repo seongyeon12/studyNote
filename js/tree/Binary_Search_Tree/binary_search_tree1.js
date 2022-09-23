@@ -1,4 +1,4 @@
-  // node() value와 left, right node 저장을 위한 생성자 
+// node() value와 left, right node 저장을 위한 생성자 
   function Node(value) {
     this.value = value;
     this.left = null;
@@ -33,23 +33,38 @@
     this.root = this._insertNode(this.root, value);
   }
 
+  /* 중위순회 */
+  BinaryTree.prototype._inOrderTraverseNode = function(node, callback) {
+    if (node === null) {
+      return;
+    }
+
+    
+    this._inOrderTraverseNode(node.left, callback)
+    callback(node);
+    this._inOrderTraverseNode(node.right, callback)
+  }
+
+  BinaryTree.prototype.inOrderTraverse = function(callback) {
+    this._inOrderTraverseNode(this.root, callback)
+  }
+
   let tree = new BinaryTree();
 
   tree.insert("F");
-  /* 
-  this.root = null -> F
-  */
   tree.insert("B");
-  /* 
-  this.root = F
-  F.left = B;
-  */
-  tree.insert("C");
   tree.insert("A");
-  tree.insert("S");
-  tree.insert("Z");
-  tree.insert("J");
-  tree.insert("M");
-  tree.insert("N");
+  tree.insert("D");
+  tree.insert("C");
+  tree.insert("E");
+  tree.insert("G");
+  tree.insert("I");
+  tree.insert("H");
 
-  console.log(tree)
+  function printNode(node) {
+    process.stdout.write(`#${node.value} -> `)
+  }
+
+  console.log("********* in-Order *********")
+  tree.inOrderTraverse(printNode)
+  console.log("end");

@@ -33,6 +33,21 @@
     this.root = this._insertNode(this.root, value);
   }
 
+  /* 전위 순회 */
+  BinaryTree.prototype._preOrderTraverseNode = function(node, callback) {
+    if (node === null) {
+      return;
+    }
+
+    callback(node);
+    this._preOrderTraverseNode(node.left, callback)
+    this._preOrderTraverseNode(node.right, callback)
+  }
+
+  BinaryTree.prototype.preOrderTraverse = function(callback) {
+    this._preOrderTraverseNode(this.root, callback)
+  }
+
   let tree = new BinaryTree();
 
   tree.insert("F");
@@ -53,3 +68,11 @@
   tree.insert("N");
 
   console.log(tree)
+
+  function printNode(node) {
+    process.stdout.write(`#${node.value} -> `)
+  }
+
+  console.log("********* Pre-Order *********")
+  tree.preOrderTraverse(printNode)
+  console.log("end");
