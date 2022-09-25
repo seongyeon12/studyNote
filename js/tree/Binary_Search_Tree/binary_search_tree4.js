@@ -46,6 +46,7 @@
 
   BinarySearchTree.prototype.inOrderTraverse = function(callback) {
     this._inOrderTraverseNode(this.root, callback)
+    console.log("end")
   }
 
   // _MinNode() 반복문으로 트리를 순회하며 최솟값 노드 탐색
@@ -104,6 +105,53 @@
     return this._searchNode(this.root, value);
   }
 
+  // _findMinNode() 반복문으로 트리를 순회하며 최솟값을 보유한 노드 탐색/반환 
+  BinarySearchTree.prototype._findMinNode = function (node) {
+    while(node && node.left !== null) {
+      node = node.left;
+    }
+
+    return node;
+  }
+
+  // _removeNode() 재귀로 트리를 순회하며 값을 만족하는 노드를 찾고 삭제 
+  BinarySearchTree.prototype._removeNode = function (node, value) {
+    if (node === null) {
+      return null
+    }
+
+    if (node.value === value) {
+      // 케이스 1 > 0 child node (leaf node)
+      if (node.left === null && node.right === null) {
+        node = null;
+      } 
+      // 케이스 2 > 1 child node
+      else if (node.left === null) {
+        node = node.right;
+      } else if (node.right === null) {
+        node = node.left;
+      }
+      // 케이스 3 > 2 child node 
+      else {
+        let anx = this._findMinNode(node.right);
+        node.value = anx.value;
+        node.right = this._removeNode(node.right, anx.value)
+      }
+
+    } else if (node.value > value) {
+      node.left = this._removeNode(node.left, value)
+    } else if (node.value < value) {
+      node.right = this._removeNode(node.right, value)
+    }
+
+    return node;
+  }
+
+  // remove() 노드 삭제 
+  BinarySearchTree.prototype.remove = function (value) {
+    this.root = this._removeNode(this.root, value)
+  }
+
   let tree = new BinarySearchTree();
 
   tree.insert("F");
@@ -127,3 +175,11 @@
 
   console.log(tree.search("J") ? "Found J" : "Not found J")
   console.log(tree.search("H") ? "Found H" : "Not found H")
+
+  tree.inOrderTraverse(printNode);
+  tree.remove("H")
+  tree.inOrderTraverse(printNode);
+  tree.remove("D")
+  tree.inOrderTraverse(printNode);
+  tree.remove("F")
+  tree.inOrderTraverse(printNode);
