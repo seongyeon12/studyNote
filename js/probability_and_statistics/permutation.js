@@ -5,7 +5,9 @@
 const getCombinations = (arr, num) => {
   const results = [];
 
-  if (num === 1) return arr.map(v => [v]);
+  if (num === 1) {
+    return arr.map(v => [v]);
+  }
 
   arr.forEach((fixed, index, origin) => {
       const rest = origin.slice(index + 1);
@@ -16,7 +18,6 @@ const getCombinations = (arr, num) => {
 
       results.push(...attached);
   });
-
   return results;
 }
 
