@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100%;
+      height: 1000px;
+    }
+  </style>
+</head>
+<body>
+  <div style="background-color: red">1</div>
+  <div style="background-color: orange">2</div>
+  <div style="background-color: yellow">3</div>
+  <div style="background-color:green">4</div>
+  <div style="background-color: blue">5</div>
+  <div style="background-color: navy">6</div>
+  <div style="background-color: violet">7</div>
+</body>
+<script>
+  let i = 0;
+
+window.addEventListener('scroll', 
+throttle(() => {
+  i = i + 1;
+  console.log(i)
+}, 1000), );
+
+/**
+  * 이벤트 발생이 많을 때 특정 밀리세컨드 동안 이벤트를 차단하고 단 한번만 실행시킨다.
+  *
+  * 실행시킬 함수, 차단시킬 밀리세컨드
+*/
+function throttle(callback, wait) {
+  let timeout = null; // 초기 undifined
+
+  // 함수 호출 시 매번 반환
+  return function (...args) {
+    const context = this;
+  
+
+    if (!timeout) {
+      timeout = setTimeout(() => {
+        callback.apply(this, args)
+        timeout = null;
+      }, wait);
+    }
+  };
+
+}
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      position:absolute; top:50%; left: 50%; transform:translate(-50%, -50%);
+    }
+    div {
+      width: 200px;
+      height: 600px;
+      border: 5px solid blueviolet;
+      text-align: center;
+    }
+    ul {
+      width: 100px;
+      height: 510px;
+      border: 5px solid palevioletred;
+      text-align: left;
+      font-size: 20px
+    }
+  </style>
+</head>
+<body>
+      <h1>바구니</h1>
+      <ul>
+        <li class="item">사과</li>
+        <li class="item">포도</li>
+        <li class="item">오렌지</li>
+        <li class="item">바나나</li>
+        <li class="item">키위</li>
+        <li class="item">자두</li>
+      </ul>
+</body>
+<script>
+  const items = document.querySelector('ul')
+  items.addEventListener('click', (e) => {
+    if (e.target.nodeName !== 'LI') {
+      return;
+    }
+    e.target.style.background = 'blue'
+  })
+</script>
+</html>

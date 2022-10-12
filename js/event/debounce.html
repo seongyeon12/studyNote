@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      position:absolute; top:50%; left: 50%; transform:translate(-50%, -50%);
+    }
+    input {
+      width: 200px;
+      height: 50px;
+      font-size: 25px;
+      border: 5px solid palegreen;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <input title="검색" type="text"/>
+  </form>
+</body>
+<script>
+  let i = 0;
+
+  document.querySelector('input').addEventListener(
+    'keyup',
+    debounce(() => {
+      i = i + 1;
+      console.log(i); 
+  }, 1500),
+);
+
+  /* 
+    실행시킬 함수, 지연시킬 밀리세컨드
+  */
+  function debounce(callback, wait) {
+    let timeout; // 초기 undifined
+
+    // 함수 호출 시 매번 반환
+    return function (...args) {
+      const context = this;
+    
+
+    clearTimeout(timeout);
+    timeout = setTimeout(() => callback.apply(context, args), wait);
+    }
+  }
+</script>
+</html>
