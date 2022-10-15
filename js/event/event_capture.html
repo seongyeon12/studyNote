@@ -44,12 +44,7 @@
   container.addEventListener('click', (e) => {
     console.error('Div 이벤트 발생')
     event.target.style.background = 'forestgreen'
-  },
-  {
-    capture: ture,
-    once: ture,
-    passive: true
-  })
+  }, true)
 
   list.addEventListener('click', (e) => {
     console.warn('UL 이벤트 발생')
