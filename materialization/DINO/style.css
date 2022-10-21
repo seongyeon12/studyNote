@@ -1,0 +1,25 @@
+body {
+  margin: 0 auto;
+  width: 300px;
+  overflow:hidden
+}
+
+a {
+  padding: 5px;
+  color: #000;
+  text-decoration: none;
+  border: 1px solid yellowgreen;
+  border-radius: 5px;
+  transition: all 0.2s;
+  font-weight: bold;
+}
+
+a:hover {
+  background-color: yellowgreen;
+  border: 1px solid yellowgreen;
+  color: rgb(255, 255, 255);
+}
+
+#user {
+  font-weight: bold;
+}

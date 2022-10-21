@@ -7,4 +7,10 @@ function Person(name, age) {
   }
 }
 
-module.exports = Person
+const a = "a";
+
+module.exports = {
+  Person: Person,
+  a: a
+}
+
