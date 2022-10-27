@@ -114,7 +114,7 @@ function checkMatch() {
 
   generateNewBlock()
 }
-/* 밑 닿을 시 새로운 블럭 생성 */
+/* 밑에 닿을 시 새로운 블럭 생성 */
 function generateNewBlock() {
   clearInterval(downInterval)
 
@@ -162,7 +162,7 @@ function dropBlock() {
   clearInterval(downInterval)
   downInterval = setInterval(() => {
     moveBlock("top", 1)
-  }, 5)
+  }, 10)
 }
 
 // 게임오버
