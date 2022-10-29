@@ -1,9 +1,8 @@
-
 ##확장자 무시
 *.json
 text
 ##폴더무시
 .vscode/
 test
-
-a.scss
+강의자료-이해가-빠른-일취월장-리액트
+node_modules/
