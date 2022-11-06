@@ -6,10 +6,14 @@ export default function App() {
   const add = () => setNumber((number) => number + 1);
   const subtract = () => setNumber((number) => number - 1);
   const multiplyBy2 = () => setNumber((number) => number * 2);
+  
   const multiplyBy2AndAddBy1 = () => {
-    multiplyBy2();
-    add();
+    multiplyBy2(); // setNumber(number * 2) -> UI
+    add(); // setNumber(number + 1) -> UI
   };
+
+  // 3, 6, 4
+  // Object.assign({ number, {number : number * 2, number : number + 1 } })
 
   return (
     <div>

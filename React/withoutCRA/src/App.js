@@ -22,14 +22,11 @@ function App() {
   )
 } */
 
-import "./App.css"
-import Counter from "./components/counter"
+import Calculator from "./components/Calculator.js";
 
 function App() {
     return (
-    <div className="App">
-      <Counter />
-    </div>
+      <Calculator />
   )
 }
 
