@@ -9,9 +9,9 @@
 <body>
   <span id="id">I like Front-end</span>
   <button id="react">react</button>
-  <button id="Angular"></button>
-  <button id="vue"></button>
-  <button id="svelte"></button>
+  <button id="Angular" title="btn"></button>
+  <button id="vue" title="btn"></button>
+  <button id="svelte" title="btn"></button>
 </body>
 <script>
   const title = document.querySelector('title')
@@ -28,6 +28,5 @@
   Angular.addEventListener('click', clicked(e.target.innerText))
   vue.addEventListener('click', clicked(e.target.innerText))
   svelte.addEventListener('click', clicked(e.target.innerText))
-
 </script>
 </html>

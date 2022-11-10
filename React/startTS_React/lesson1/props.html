@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>props강의</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <div>
+      </div>
+    </div>
+
+    <!-- 스크립트 -->
+    <script type="text/babel">
+      let titleName = "I like Front-end"
+      const root = document.getElementById("root")
+      const Title = (props) => <span> I like {props.titleProps} </span> 
+      const Button = (props) => <button>{props.children} style={props.style}</button>
+
+      const Container = () => {
+      const [title, setTitle] = React.useState("Front-end")
+  
+      function clickedButton (text) {
+        console.log('clicked: ', text)
+
+        setTitle(text)
+      }
+  
+      return (
+      <div>
+        <Title titleProps={title} />
+        <Button onClick={clickedButton} style={{ fontSize: '20px' }}>React</Button>
+        <Button onClick={clickedButton} style={{ color: 'red' }}>Angular</Button>
+        <Button onClick={clickedButton} style={{ fontSize: '12px' }}>Vue</Button>
+        <Button onClick={clickedButton} style={{ color: 'blue' }}>Svelte</Button>
+      </div>
+      )
+    }
+  
+    function render() {
+      ReactDOM.render(<Container/>, root)
+    }
+  
+    render()
+    </script>
+  </body>
+</html>

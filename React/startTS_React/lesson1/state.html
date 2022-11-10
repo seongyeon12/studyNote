@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>state강의</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <div>
+      </div>
+    </div>
+
+    <!-- 스크립트 -->
+    <script type="text/babel">
+      let titleName = "I like Front-end"
+      const root = document.getElementById("root")
+
+      const Container = () => {
+      const [title, setTitle] = React.useState("Front-end")
+  
+      function clickedButton (text) {
+        console.log('clicked: ', text)
+        setTitle(text)
+      }
+  
+      return (
+      <div>
+        <span>I like {title}</span>
+        <button onClick={(e) => clickedButton(e.target.innerText)}>React</button>
+        <button onClick={(e) => clickedButton(e.target.innerText)}>Angular</button>
+        <button onClick={(e) => clickedButton(e.target.innerText)}>Vue</button>
+        <button onClick={(e) => clickedButton(e.target.innerText)}>Svelte</button>
+      </div>
+      )
+    }
+  
+    function render() {
+      ReactDOM.render(<Container/>, root)
+    }
+  
+    render()
+    </script>
+  </body>
+</html>
