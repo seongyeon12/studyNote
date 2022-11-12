@@ -4,5 +4,6 @@ text
 ##폴더무시
 .vscode/
 test
+testmode
 강의자료-이해가-빠른-일취월장-리액트
 node_modules/
