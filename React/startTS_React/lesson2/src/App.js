@@ -1,5 +1,3 @@
-import React, {useState} from 'react';
-import './App.css';
 import styles from './App.module.css';
 import Header from './Header'
 import ListContainer from './ListContainer'

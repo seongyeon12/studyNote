@@ -1,4 +1,5 @@
 import styles from './ListContainer.module.css'
+import axios from 'axios'
 import cx from 'clsx'
 import Button from './components/Button'
 import ListItem from './components/ListItem'
@@ -11,8 +12,20 @@ import Pagination from './components/Pagination'
 
 export default function ListContainer() {
   const [inputValue, setInputValue] = useState('is:pr is:open')
+  const [checked, setChecked] = useState(false)
   const [list, setList] = useState([])
   const [page, setPage] = useState(1)
+  const maxPage = 10;
+
+  async function getData() {
+    const { data } = await axios.get(`https://api.github.com/repos/axios/axios/issues`)
+    setList(data)
+  }
+
+  useEffect(() => {
+    getData()
+  }, []) // componentsDidmount = DOM이 그려진 후에 getData 실행
+
 
   return (
     <>
@@ -31,6 +44,7 @@ export default function ListContainer() {
       </Button>
       </div>
       <OpenClosedFilters />
+      <div className={styles.container}>
       <ListItemLayout className={styles.listFilter}>
         <ListFilter onChangeFilter={(filteredData) => {
           // 필터링된 요소에 맞게 데이터 불러오기
@@ -38,20 +52,12 @@ export default function ListContainer() {
           // setList(data)
         }}/>
       </ListItemLayout>
-      <div className={styles.container}>
-        {list.map((listItem, index) => (
+        {list.map((item) => (
         <ListItem 
-        key = {index}
-        badges={[
-          {
-            color: 'red',
-            title: 'Bug2',
-          },
-          {
-            color: 'blue',
-            title: 'Bug3',
-          },
-        ]}
+        key={item.id}
+        data={item}
+        checked={checked}
+        onChangeCheckBox={() => setChecked((checked) => !checked)} 
         />
         ))}
       </div>
