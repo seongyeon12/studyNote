@@ -8,24 +8,30 @@ import ListFilter from './components/ListFilter'
 import { useState, useEffect } from 'react'
 import ListItemLayout from './components/ListItemLayout'
 
+import Modal from './components/Modal'
 import Pagination from './components/Pagination'
+
+const GITHUB_API = 'https://api.github.com/'
 
 export default function ListContainer() {
   const [inputValue, setInputValue] = useState('is:pr is:open')
   const [checked, setChecked] = useState(false)
-  const [list, setList] = useState([])
+  const [list, setList] = useState([]) /* data */
   const [page, setPage] = useState(1)
   const maxPage = 10;
 
-  async function getData() {
-    const { data } = await axios.get(`https://api.github.com/repos/axios/axios/issues`)
+  async function getData(pageParam) {
+    const { data } = await axios.get(`${GITHUB_API}repos/axios/axios/issues`, {
+      params: { pageParam },
+    })
     setList(data)
   }
 
   useEffect(() => {
-    getData()
-  }, []) // componentsDidmount = DOM이 그려진 후에 getData 실행
+    getData(page)
+  }, [page])
 
+  console.log({list})
 
   return (
     <>
@@ -50,12 +56,13 @@ export default function ListContainer() {
           // 필터링된 요소에 맞게 데이터 불러오기
           // const data = getData('필터링된 정보')
           // setList(data)
-        }}/>
+        }}
+      />
       </ListItemLayout>
         {list.map((item) => (
         <ListItem 
-        key={item.id}
         data={item}
+        key={item.id}
         checked={checked}
         onChangeCheckBox={() => setChecked((checked) => !checked)} 
         />
@@ -64,9 +71,10 @@ export default function ListContainer() {
     </div>
     <div className={styles.paginationContainer}>
     <Pagination 
-    maxPage={10} 
     currentPage={page} 
-    onClickPageButton={(number) => setPage(number)}/>
+    onClickPageButton={(pageNumber) => setPage(pageNumber)}
+    maxPage={maxPage} 
+    />
     </div>
     </>
   )
