@@ -22,6 +22,7 @@ function Movie({ id, coverImg, title, year, summary, genres }) {
   );
 }
 
+/* 타입체크 (문자숫자) */
 Movie.propTypes = {
   id: propTypes.number.isRequired,
   coverImg: propTypes.string.isRequired,
