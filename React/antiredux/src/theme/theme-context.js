@@ -16,3 +16,5 @@ return color
 };
 
 const ThemeContext = createContext(themes.color.dark);
+
+export {ThemeContext, createContext}
